@@ -14,16 +14,18 @@ body{
   width: 100%;
   background: #333;
   /* background-image: url('https://media.giphy.com/media/3ov9k1173PdfJWRsoE/giphy.gif'); */
-  background-image: url("./assets/background.png");
+  background-image: url("./assets/spaceBackground.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  animation: BgRickAndMorty 1500s ease infinite;
+  background-size: 200%;
+  animation: BgRickAndMorty 500s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  
 }
 
 @keyframes BgRickAndMorty {
-  0% {background-position: 0% 30%;}
-  50% {background-position: 30% 0%;}
-  100% {background-position: 0% 30%;}
+  0% {background-position: 0% 50%;}
+  50% {background-position: 50% 100%;}
+  100% {background-position: 0% 50%;}
 }
 
 
@@ -34,6 +36,7 @@ body{
   justify-content: center;
   align-items: center;
   color: white;
+  background: rgba(0, 0, 0, 0.412);
 }
 
 
@@ -168,19 +171,20 @@ ul{
 }
 
 .locationInfoContainer{
-  background: rgba(234, 234, 235, 0.363);
+  background: rgba(85, 22, 125, 0.284);
   backdrop-filter: blur(10px);
   padding: 0px;
   border-radius: 10px;
   margin-top: -40px;
   min-width: 500px;
   max-width: 700px;
-  text-shadow: 1px 1px 2px #333;
-  padding: 20px;
-  box-shadow: 0.5px 0.5px 10px #000;
+  text-shadow: 1px 1px 20px #000;
+  padding: 10px;
+  box-shadow: 0.5px 0.5px 20px #02e602;
 }
-h1{
-  margin-bottom: 28px;
+.locationInfoContainer>h2{
+  margin-top: 5px;
+
 }
 
 .locationInfo{
@@ -188,7 +192,10 @@ h1{
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  margin-top: -10px;
+  
 }
+
 
 b{
   margin-bottom: 10px;
@@ -199,15 +206,16 @@ b{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  width: 33%;
+  font-size: 13px;
+  width: 25%;
   padding: 0 10px;
+  line-height: 15px;
 }
 
 .line{
-  height: 100px;
-  margin-top: 10px;
-  width: 1px;
+  height: 65px;
+  margin-top: 8px;
+  width: 0.7px;
   background-color: white;
 }
 
@@ -215,7 +223,7 @@ b{
   margin-top: 40px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 280px));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 260px));
   justify-content: center;
   align-content: center;
   gap: 30px;
@@ -223,63 +231,185 @@ b{
 }
 
 .character-container{
-  height: 480px;
+  height: 330px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: left;
-  padding-bottom: 20px;
   border-radius: 10px;
-  background: rgba(147, 147, 148, 0.47);
-  backdrop-filter: blur(10px);
+  background: rgba(147, 147, 148, 0.37);
+  backdrop-filter: blur(5px);
   overflow: hidden;
   text-shadow: 1px 1px 2px #333;
   box-shadow: 0.5px 0.5px 10px #000;
-}
-
-.characterGrid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: flex-start;
-  justify-content: center;
+  
   
 }
 
+.characterStatus{
+  padding: 5px 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  left: 0;
+  background: rgba(51, 51, 51, 0.832);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 1px 1px 4px #111;
+}
+
+.pointStatus{
+  font-size: 25px;
+}
+
+.character-container > img{
+  margin-top: 50px;
+  border-radius: 50%;
+  width: 70%;
+  box-shadow: 0px 0px 40px #02e602;
+  border: 1.8px solid #55167d;
+}
+
+.characterGrid{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: -10px;
+}
 
 
+.character-info{
+  background: rgba(51, 51, 51, 0.752);
+  height: 25%;
+  width: 100%;
+  text-shadow: 1px 1px 10px #111;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  
+}
 
 .character-info > h2 {
-  padding: 0 23px;
-  margin-bottom: 5px;
+  padding-left: 10px;
+  font-size: 21px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 130px;
 }
+
+.character-info> i{
+  margin: 0;
+  padding: 0;
+  background: #02e602;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-right: -30px; */
+  text-shadow: 1px 1px 2px #111;
+  box-shadow: 1px 1px 2px #111;
+
+}
+
+.character-info > i:hover{
+  background: white;
+  cursor: pointer;
+  color: #02e602;
+  text-shadow: 0px 0px 1px rgba(94, 94, 94, 0.844);
+  
+
+}
+
 
 .characterGrid > p > b {
   margin-bottom: -27px;
 }
 
+.characterGrid > p {
+  font-size: 13px;
+}
+
 .characterInfo{
-  padding: 0 30px 0 30px;
+  margin-left: 0px;
   line-height: 15px;
-  margin-bottom: 3px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  
+}
+
+.characterBack{
+  margin-top: -20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.characterBack > i {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.characterBack>i:hover{
+  cursor: pointer;
+  color: #02e602;
+}
+
+.characterBack > h2{
+  width: 80%;
+  text-align: center;
+  font-size: 19px;
+  text-shadow: 0px 0px 10px #02e602;
+}
+
+.characterBack > img{
+  margin-top: 50px;
+  border-radius: 50%;
+  width: 30%;
+  box-shadow: 0px 0px 40px #02e602;
+  border: 1.8px solid #55167d;
+}
+
+.lineBack{
+  margin-top: 7px;
+  width: 200px;
+  height: 0.3px;
+  background: white;
 }
 
 .paginaitonConatiner{
-  min-width: 300px;
+  width: 162px;
+  height: 50px;
+  overflow:scroll;
   border-radius: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  /* flex-wrap: wrap; */
   list-style: none;
   margin-bottom: 50px;
   gap: 10px;
+  padding: 10px;
 }
 
 .paginaitonConatiner > div {
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 12px;
+  padding: 20px;
   border-radius: 50%;
   background: rgba(143, 140, 140, 0.263);
   backdrop-filter: blur(10px);
@@ -295,7 +425,7 @@ b{
 .paginaitonConatiner > div:hover{
   background:  rgba(35, 35, 35, 0.423);
   cursor: pointer;
-  box-shadow: 0px 0px 8px #888;
+  box-shadow: 0px 0px 8px #02e602;
 
 }
 

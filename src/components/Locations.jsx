@@ -108,7 +108,7 @@ function Locations() {
       
 
       <div className="locationInfoContainer">
-        <h1>{location.name}</h1>
+        <h2>{location.name}</h2>
             <div className="locationInfo">
                 <p className="cityInfo">
                 <b>Type: </b>

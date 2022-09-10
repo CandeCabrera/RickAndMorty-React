@@ -1,40 +1,83 @@
-import React from 'react';
-import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const ResidentInfo = ({url}) => {
+const ResidentInfo = ({ url }) => {
+  const [characters, setCharacters] = useState({});
+  const [color, setColor] = useState("");
+  const [isCardFront, setIsCardFront] = useState(true);
 
-    const [characters, setCharacters] = useState({});
+  useEffect(() => {
+    axios.get(url).then((res) => {
+      setCharacters(res.data);
+      if (res.data.status === "Alive") {
+        setColor("green");
+      } else if (res.data.status === "Dead") {
+        setColor("red");
+      } else {
+        setColor("gray");
+      }
+    });
+  }, []);
 
-    useEffect(()=>{
-        axios.get(url)
-        .then(res => setCharacters(res.data))
-    }, []);
+  return (
+    <div className="characters" key={characters.id}>
+      <div className="character-container">
+        {isCardFront ? (
+          <>
+            <p className="characterStatus">
+              {" "}
+              <span className="pointStatus" style={{ color: color }}>
+                •
+              </span>{" "}
+              <span>{characters.status}</span>
+            </p>
+            <img src={characters.image} alt="" />
 
-    return (
-        
-            <div className="characters" key={characters.id}>
-                <div className='character-container'>
-                    
-                    <img src={characters.image} alt="" />
-                    
-                    <div className="character-info">
-                        <h2>{characters.name}</h2>
-                        <div className="characterGrid">
-                        <p className='characterInfo'><b>STATUS <br /><br /><br /> </b>{characters.status}</p>
-                        <p className='characterInfo'><b>ORIGIN <br /><br /><br /> </b>{characters.origin?.name}</p>
-                        <p className='characterInfo'><b>SPECIES <br /><br /><br /> </b>{characters.species}</p>
-                        <p className='characterInfo'><b>EPISODES <br /><br /><br /> </b>{characters.episode?.length}</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                
+            <div className="character-info">
+              <h2>{characters.name}</h2>
+              <i onClick={()=> {setIsCardFront(false)}} className="fa-regular fa-eye"></i>
             </div>
-        
-        
-    );
+          </>
+        ) : (
+          <div className="characterBack">
+            <i onClick={()=>setIsCardFront(true)} className="fa-solid fa-xmark"></i>
+            <img src={characters.image} alt="" />
+            <h2>{characters.name}</h2>
+            <div className="characterGrid">
+              <p className="characterInfo">
+                <b>
+                  ORIGIN <br />
+                  <br />
+                  <br />{" "}
+                </b>
+                {characters.origin?.name}
+              </p>
+              <div className="lineBack"></div>
+              <p className="characterInfo">
+                <b>
+                  SPECIES <br />
+                  <br />
+                  <br />{" "}
+                </b>
+                {characters.species}
+              </p>
+              <div className="lineBack"></div>
+              <p className="characterInfo">
+                <b>
+                  EPISODES <br />
+                  <br />
+                  <br />{" "}
+                </b>
+                {characters.episode?.length}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default ResidentInfo;
