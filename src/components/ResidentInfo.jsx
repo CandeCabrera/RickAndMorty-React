@@ -16,13 +16,17 @@ const ResidentInfo = ({url}) => {
         
             <div className="characters" key={characters.id}>
                 <div className='character-container'>
-                    <h1>{characters.name}</h1>
+                    
                     <img src={characters.image} alt="" />
+                    
                     <div className="character-info">
-                        <p><b>Status: </b>{characters.status}</p>
-                        <p><b>Origin: </b>{characters.origin?.name}</p>
-                        <p><b>Species: </b>{characters.species}</p>
-                        <p><b>Episodes: </b>{characters.episode?.length}</p>
+                        <h2>{characters.name}</h2>
+                        <div className="characterGrid">
+                        <p className='characterInfo'><b>STATUS <br /><br /><br /> </b>{characters.status}</p>
+                        <p className='characterInfo'><b>ORIGIN <br /><br /><br /> </b>{characters.origin?.name}</p>
+                        <p className='characterInfo'><b>SPECIES <br /><br /><br /> </b>{characters.species}</p>
+                        <p className='characterInfo'><b>EPISODES <br /><br /><br /> </b>{characters.episode?.length}</p>
+                        </div>
                         
                     </div>
                 </div>
