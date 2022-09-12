@@ -593,5 +593,9 @@ b{
     font-size: 13px;
     
   }
+
+  .characterStatus{
+    left: 20px;
+  }
 }
 
