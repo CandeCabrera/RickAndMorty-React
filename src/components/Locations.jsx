@@ -56,6 +56,7 @@ function Locations() {
     function changePage(page){
   
       setPage(page);
+      
   
     }
   
@@ -133,10 +134,12 @@ function Locations() {
         ))}
       </div>
 
+      {residents &&
       <div className="paginaitonConatiner">
-        <Pagination changePage={changePage} itemsPerPage={itemsPerPage} total={total}/>
+        <Pagination changePage={changePage} itemsPerPage={itemsPerPage} currentPage={page} array={location?.residents}/>
 
       </div>
+      }
 
       
     </div>

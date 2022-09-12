@@ -7,16 +7,24 @@ const ResidentInfo = ({ url }) => {
   const [characters, setCharacters] = useState({});
   const [color, setColor] = useState("");
   const [isCardFront, setIsCardFront] = useState(true);
+  const [fontSize, setFontSize] = useState('21px')
 
   useEffect(() => {
     axios.get(url).then((res) => {
       setCharacters(res.data);
-      if (res.data.status === "Alive") {
-        setColor("green");
-      } else if (res.data.status === "Dead") {
-        setColor("red");
-      } else {
-        setColor("gray");
+      let status = {Alive: 'green', Dead: 'red', unknown: 'gray'}
+
+      setColor(status[res.data?.status])
+      // if (res.data.status === "Alive") {
+      //   setColor("green");
+      // } else if (res.data.status === "Dead") {
+      //   setColor("red");
+      // } else {
+      //   setColor("gray");
+      // }
+
+      if (res.data.name.length > 20){
+        setFontSize('16px')
       }
     });
   }, []);
@@ -36,7 +44,7 @@ const ResidentInfo = ({ url }) => {
             <img src={characters.image} alt="" />
 
             <div className="character-info">
-              <h2>{characters.name}</h2>
+              <h2 style={{fontSize: fontSize}}>{characters.name}</h2>
               <i onClick={()=> {setIsCardFront(false)}} className="fa-regular fa-eye"></i>
             </div>
           </>
