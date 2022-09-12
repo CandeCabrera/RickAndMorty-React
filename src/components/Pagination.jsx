@@ -29,7 +29,7 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
             <>
         
             {
-                currentPage > first && <div onClick={()=> changePage(currentPage-1)} key="back" className='arrowLeft arrow'><i className="fa-solid fa-arrow-left"></i></div>
+                currentPage > first && <div className='arrowLeft arrow' onClick={()=> changePage(currentPage-1)} key="back" ><i className="fa-solid fa-arrow-left"></i></div>
             }
 
 
@@ -38,7 +38,7 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
                 (last <= 6) ? (
                     range.map(page => (
 
-                        <div style={{background:  currentPage === page+1 ? "#02e602" : "#55167d"}}  onClick={()=> {changePage(page+1) 
+                        <div className='pages' style={{background:  currentPage === page+1 ? "#02e602" : "#55167d"}}  onClick={()=> {changePage(page+1) 
                             }}>{page+1}</div>
 
                         )
@@ -56,14 +56,14 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
                 
                 (
                     <>
-                        <div style={{background:  currentPage === 1 && "#02e602"}}  onClick={()=> {changePage(1)
+                        <div className='pages' style={{background:  currentPage === 1 && "#02e602"}}  onClick={()=> {changePage(1)
                         }} >1</div>
-                        <div style={{background:  currentPage === 2 && "#02e602"}}  onClick={()=> {changePage(2)
+                        <div className='pages' style={{background:  currentPage === 2 && "#02e602"}}  onClick={()=> {changePage(2)
                         }} >2</div>
-                        <div style={{background:  currentPage === 3 && "#02e602"}}  onClick={()=> {changePage(3)
+                        <div className='pages' style={{background:  currentPage === 3 && "#02e602"}}  onClick={()=> {changePage(3)
                        }} >3</div>
-                        <span>...</span>
-                        <div style={{background:  currentPage === last && "#02e602"}} onClick={()=> {changePage(last)}} >{last}</div>
+                        <span className='dots'>. . .</span>
+                        <div className='pages' style={{background:  currentPage === last && "#02e602"}} onClick={()=> {changePage(last)}} >{last}</div>
                     </>
                 ) 
                 
@@ -75,13 +75,13 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
                 
                     (
                         <>
-                            <div onClick={()=> changePage(first)} >{first}</div>
-                            <span>...</span>
-                            <div onClick={()=> changePage(currentPage-1)} >{currentPage-1}</div>
-                            <div style={{background:"#02e602"}} onClick={()=> changePage(currentPage)} >{currentPage}</div>
-                            <div onClick={()=> changePage(currentPage+1)} >{currentPage+1}</div>
-                            <span>...</span>
-                            <div onClick={()=> changePage(last)} >{last}</div>
+                            <div  className='firstLast' onClick={()=> changePage(first)} >{first}</div>
+                            <span className='dots'>. . .</span>
+                            <div className='pages' onClick={()=> changePage(currentPage-1)} >{currentPage-1}</div>
+                            <div className='pages' style={{background:"#02e602"}} onClick={()=> changePage(currentPage)} >{currentPage}</div>
+                            <div className='pages' onClick={()=> changePage(currentPage+1)} >{currentPage+1}</div>
+                            <span className='dots'>. . .</span>
+                            <div className='firstLast' onClick={()=> changePage(last)} >{last}</div>
                         </>
                     )
 
@@ -89,11 +89,11 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
 
                     (
                         <>
-                            <div style={{background:  currentPage === first && "#02e602"}} onClick={()=> changePage(first)} >{first}</div>
-                            <span>...</span>
-                            <div style={{background:  currentPage === range.at(-2) && "#02e602"}} onClick={()=> changePage(last-2)} >{last-2}</div>
-                            <div style={{background:  currentPage === range.at(-1) && "#02e602"}} onClick={()=> changePage(last-1)} >{last-1}</div>
-                            <div style={{background:  currentPage === last && "#02e602"}} onClick={()=> changePage(last)} >{last}</div>
+                            <div className='pages' style={{background:  currentPage === first && "#02e602"}} onClick={()=> changePage(first)} >{first}</div>
+                            <span className='dots'>. . .</span>
+                            <div className='pages' style={{background:  currentPage === range.at(-2) && "#02e602"}} onClick={()=> changePage(last-2)} >{last-2}</div>
+                            <div className='pages' style={{background:  currentPage === range.at(-1) && "#02e602"}} onClick={()=> changePage(last-1)} >{last-1}</div>
+                            <div className='pages' style={{background:  currentPage === last && "#02e602"}} onClick={()=> changePage(last)} >{last}</div>
                         </>
                     )
 
@@ -105,7 +105,7 @@ const Pagination = ({changePage, currentPage, itemsPerPage, array = []}) => {
 
 
             {
-                currentPage < last && <div onClick={()=> changePage(currentPage+1)} key="end" className='arrowRight arrow'><i className="fa-solid fa-arrow-right"></i></div>
+                currentPage < last && <div className='arrowRight arrow' onClick={()=> changePage(currentPage+1)} key="end" ><i className="fa-solid fa-arrow-right"></i></div>
             }
             </>
 

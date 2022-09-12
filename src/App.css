@@ -500,8 +500,17 @@ b{
   margin-bottom: 50px;
   gap: 10px;
 }
+.arrow{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #55167da1;
+}
 
-.paginaitonConatiner > div {
+.pages {
   width: 45px;
   height: 45px;
   /* padding: 20px; */
@@ -517,6 +526,17 @@ b{
   box-shadow: 1.5px 1.5px 8px #000;
 }
 
+.firstLast{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(143, 140, 140, 0.263);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .paginaitonConatiner > div:hover{
   background:  rgba(35, 35, 35, 0.423);
   cursor: pointer;
@@ -524,30 +544,48 @@ b{
 
 }
 
+.dots{
+  margin-top: 15px;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+
 
 
 @media(max-width:600px){
 
   .paginaitonConatiner{
-    width: 300px;
+    width: 325px;
     height: 50px;
   }
 
-  .paginaitonConatiner > div {
-    width: 25px;
-    height: 25px;
+  .pages {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    
+  }
+
+  .dots{
+    margin-top: 6px;
+    font-weight: bolder;
     font-size: 12px;
-    /* padding: 20px; */
-    border-radius: 50%;
-    background: rgba(143, 140, 140, 0.263);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
+  }
+
+  .firstLast{
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
     font-weight: 600;
-    text-shadow: 1px 1px 2px #000;
-    box-shadow: 1.5px 1.5px 8px #000;
+
+  }
+
+  .arrow{
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
+    
   }
 }
 
