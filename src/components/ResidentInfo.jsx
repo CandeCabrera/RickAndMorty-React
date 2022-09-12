@@ -7,14 +7,14 @@ const ResidentInfo = ({ url }) => {
   const [characters, setCharacters] = useState({});
   const [color, setColor] = useState("");
   const [isCardFront, setIsCardFront] = useState(true);
-  const [fontSize, setFontSize] = useState('21px')
+  const [fontSize, setFontSize] = useState("21px");
 
   useEffect(() => {
     axios.get(url).then((res) => {
       setCharacters(res.data);
-      let status = {Alive: 'green', Dead: 'red', unknown: 'gray'}
+      let status = { Alive: "green", Dead: "red", unknown: "gray" };
 
-      setColor(status[res.data?.status])
+      setColor(status[res.data?.status]);
       // if (res.data.status === "Alive") {
       //   setColor("green");
       // } else if (res.data.status === "Dead") {
@@ -23,8 +23,8 @@ const ResidentInfo = ({ url }) => {
       //   setColor("gray");
       // }
 
-      if (res.data.name.length > 20){
-        setFontSize('16px')
+      if (res.data.name.length > 20) {
+        setFontSize("16px");
       }
     });
   }, []);
@@ -44,41 +44,37 @@ const ResidentInfo = ({ url }) => {
             <img src={characters.image} alt="" />
 
             <div className="character-info">
-              <h2 style={{fontSize: fontSize}}>{characters.name}</h2>
-              <i onClick={()=> {setIsCardFront(false)}} className="fa-regular fa-eye"></i>
+              <h2 style={{ fontSize: fontSize }}>{characters.name}</h2>
+              <i
+                onClick={() => {
+                  setIsCardFront(false);
+                }}
+                className="fa-regular fa-eye"
+              ></i>
             </div>
           </>
         ) : (
-          <div className="characterBack">
-            <i onClick={()=>setIsCardFront(true)} className="fa-solid fa-xmark"></i>
+          <div className="characterBack animate__animated animate__flipInY">
+            <i
+              onClick={() => setIsCardFront(true)}
+              className="fa-solid fa-xmark"
+            ></i>
             <img src={characters.image} alt="" />
             <h2>{characters.name}</h2>
             <div className="characterGrid">
               <p className="characterInfo">
-                <b>
-                  ORIGIN <br />
-                  <br />
-                  <br />{" "}
-                </b>
-                {characters.origin?.name}
+                <b>ORIGIN</b>
+                <span>{characters.origin?.name}</span>
               </p>
               <div className="lineBack"></div>
               <p className="characterInfo">
-                <b>
-                  SPECIES <br />
-                  <br />
-                  <br />{" "}
-                </b>
-                {characters.species}
+                <b>SPECIES</b>
+                <span>{characters.species}</span>
               </p>
               <div className="lineBack"></div>
               <p className="characterInfo">
-                <b>
-                  EPISODES <br />
-                  <br />
-                  <br />{" "}
-                </b>
-                {characters.episode?.length}
+                <b>EPISODES</b>
+                <span>{characters.episode?.length}</span>
               </p>
             </div>
           </div>
